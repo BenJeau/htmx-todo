@@ -17,3 +17,9 @@ pub struct TodosTemplate {
 pub struct TodoTemplate {
     pub todo: Todo,
 }
+
+#[derive(Template)]
+#[template(path = "add-todo.html")]
+pub struct AddTodoTemplate {
+    pub todo: Todo,
+}

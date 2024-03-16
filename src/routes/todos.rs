@@ -32,5 +32,5 @@ async fn add_todo(State(state): State<AppState>, Form(todo): Form<AddTodo>) -> i
     };
     todos.push(todo.clone());
 
-    templating::TodoTemplate { todo }
+    templating::AddTodoTemplate { todo }
 }
