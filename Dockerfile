@@ -8,6 +8,7 @@ COPY ./Cargo.toml .
 COPY ./Cargo.lock .
 
 RUN cargo build --release
+RUN upx --best --lzma /app/target/release/htmx_collab_drawing
 
 FROM scratch
 COPY --from=builder /app/target/release/htmx_collab_drawing /
