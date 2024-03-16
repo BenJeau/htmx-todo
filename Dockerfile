@@ -8,10 +8,10 @@ COPY ./Cargo.toml .
 COPY ./Cargo.lock .
 
 RUN cargo build --release
-RUN upx --best --lzma /app/target/release/htmx_collab_drawing
+RUN upx --best --lzma /app/target/release/htmx-todo
 
 FROM scratch
-COPY --from=builder /app/target/release/htmx_collab_drawing /
+COPY --from=builder /app/target/release/htmx-todo /
 COPY ./public /public
 
-CMD ["./htmx_collab_drawing"]
+CMD ["./htmx-todo"]
