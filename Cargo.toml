@@ -11,3 +11,12 @@ tokio = { version = "1.36.0", features = ["macros", "parking_lot", "rt", "rt-mul
 tower-http = { version = "0.5.2", features = ["compression-gzip", "cors", "fs", "trace"] }
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+
+[profile.dev.package.askama_derive]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+strip = true
