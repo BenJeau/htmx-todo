@@ -1,5 +1,6 @@
 mod routes;
 mod telemetry;
+mod templating;
 
 const ENV_FILTER: &str = "htmx-todo=debug,tower_http=debug";
 

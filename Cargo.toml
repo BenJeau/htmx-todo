@@ -4,6 +4,8 @@ name = "htmx-todo"
 version = "0.1.0"
 
 [dependencies]
+askama = { version = "0.12.1", default-features = false }
+askama_axum = { version = "0.4.0", default-features = false }
 axum = { version = "0.7.4", default-features = false, features = ["form", "http1", "tokio"] }
 tokio = { version = "1.36.0", features = ["macros", "parking_lot", "rt", "rt-multi-thread"] }
 tower-http = { version = "0.5.2", features = ["compression-gzip", "cors", "fs", "trace"] }
