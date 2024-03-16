@@ -32,12 +32,61 @@
   </div>
 </form>
 <hr class="border-orange-950/50" />
-<div
-  class="flex-1"
-  id="list"
-  hx-get="/todos"
-  hx-target="this"
-  hx-trigger="load"
-  hx-swap="outerHTML"
-></div>
+<div class="flex gap-4 flex-1 md:flex-row flex-col-reverse">
+  <div
+    class="flex-1"
+    id="list"
+    hx-get="/todos"
+    hx-target="this"
+    hx-trigger="load"
+    hx-swap="outerHTML"
+  ></div>
+  <div class="border-b md:border-l border-orange-950/50"></div>
+  <div>
+    <div class="flex flex-col gap-2 md:gap-4 md:sticky md:top-28 font-semibold">
+      <h2 class="hidden md:block text-lg">Actions</h2>
+      <div class="flex md:flex-col gap-2 md:flex-initial flex-wrap">
+        <button
+          class="action"
+          hx-put="/todos/done"
+          hx-trigger="click"
+          hx-target="#todos"
+          hx-swap="outerHTML"
+        >
+          Mark all as completed
+        </button>
+        <button
+          class="action"
+          hx-put="/todos/undone"
+          hx-trigger="click"
+          hx-target="#todos"
+          hx-swap="outerHTML"
+        >
+          Mark all as undone
+        </button>
+      </div>
+      <hr class="hidden md:block border-orange-950/50" />
+      <div class="flex md:flex-col gap-2 md:flex-initial flex-wrap">
+        <button
+          class="danger-action"
+          hx-delete="/todos/done"
+          hx-trigger="click"
+          hx-target="#todos"
+          hx-swap="outerHTML"
+        >
+          Delete completed
+        </button>
+        <button
+          class="danger-action"
+          hx-delete="/todos"
+          hx-trigger="click"
+          hx-target="#todos"
+          hx-swap="outerHTML"
+        >
+          Delete all
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
