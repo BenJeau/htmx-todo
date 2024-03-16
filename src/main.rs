@@ -1,4 +1,5 @@
 mod routes;
+mod state;
 mod telemetry;
 mod templating;
 
@@ -8,7 +9,9 @@ const ENV_FILTER: &str = "htmx-todo=debug,tower_http=debug";
 async fn main() {
     telemetry::setup_telemetry(ENV_FILTER);
 
-    let router = routes::router();
+    let state = state::AppState::new();
+
+    let router = routes::router(state);
 
     let addr = "0.0.0.0:3000";
     let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
