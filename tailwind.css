@@ -1,3 +1,21 @@
+.todo.htmx-settling {
+  opacity: 0;
+}
+
+.todo.htmx-added {
+  opacity: 0;
+}
+
+.todo {
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+.todo.htmx-swapping {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
