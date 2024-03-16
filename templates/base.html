@@ -28,6 +28,27 @@
           <a href="https://github.com/djc/askama">Askama</a>
         </p>
       </div>
+      <div
+        hx-sse="connect:/stats"
+        class="text-sm flex sm:flex-col gap-4 sm:gap-0 flex-wrap"
+      >
+        <p class="text-end">
+          Total:
+          <span hx-sse="swap:total" class="font-semibold"
+            >{{ stats.total }}</span
+          >
+        </p>
+        <p class="text-end">
+          Done:
+          <span hx-sse="swap:done" class="font-semibold">{{ stats.done }}</span>
+        </p>
+        <p class="text-end">
+          Next index:
+          <span hx-sse="swap:current_idx" class="font-semibold"
+            >{{ stats.current_idx }}</span
+          >
+        </p>
+      </div>
     </header>
     <main class="p-3 md:p-6 flex-1 flex flex-col gap-4" hx-ext="multi-swap">
       {% block content %}{% endblock %}

@@ -1,10 +1,12 @@
 use askama::Template;
 
-use crate::state::Todo;
+use crate::state::{Stats, Todo};
 
 #[derive(Template)]
 #[template(path = "index.html")]
-pub struct IndexTemplate;
+pub struct IndexTemplate {
+    pub stats: Stats,
+}
 
 #[derive(Template, Default)]
 #[template(path = "todos.html")]
