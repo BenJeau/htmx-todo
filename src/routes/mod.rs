@@ -4,12 +4,13 @@ use tower_http::services::ServeDir;
 use crate::{state::AppState, templating};
 
 mod stats;
+mod todo;
 mod todos;
 
 pub fn router(state: AppState) -> Router {
     Router::new()
         .route("/", get(serve_index))
-        .nest("/todos", todos::router())
+        .nest("/todos", todos::router().nest("/:id", todo::router()))
         .route("/stats", get(stats::sse_stats))
         .nest_service("/static", ServeDir::new("public/static"))
         .with_state(state)
