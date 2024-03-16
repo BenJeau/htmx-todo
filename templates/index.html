@@ -1,1 +1,43 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<form id="add-form">
+  <label for="description" class="text-sm font-semibold">Description</label>
+  <div class="flex flex-1 shadow-md rounded-md">
+    <input
+      placeholder="e.g. Buy milk"
+      required
+      type="text"
+      name="description"
+      class="text-black px-4 py-1 text-sm rounded-s-md flex-1 bg-white/50 outline-none focus-visible:outline-white border border-e-0 border-orange-900 placeholder:text-black/50"
+    />
+    <button
+      hx-post="/todos"
+      hx-trigger="click"
+      hx-swap="multi:#todos:beforeend,#todos-empty:delete"
+      class="flex gap-2 items-center text-sm outline-none font-semibold hover:bg-orange-500 text-orange-100 px-4 rounded-e-md border hover:text-orange-900 border-orange-900 bg-orange-700 focus-visible:outline-orange-500 transition-colors"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        class="h-4 w-4"
+      >
+        <path d="M5 12h14M12 5v14" />
+      </svg>
+      Add
+    </button>
+  </div>
+</form>
+<hr class="border-orange-950/50" />
+<div
+  class="flex-1"
+  id="list"
+  hx-get="/todos"
+  hx-target="this"
+  hx-trigger="load"
+  hx-swap="outerHTML"
+></div>
+{% endblock %}

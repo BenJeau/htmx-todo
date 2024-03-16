@@ -1,0 +1,17 @@
+<div
+  id="todo-{{ todo.idx }}"
+  class="flex shadow-md todo rounded-md{% if todo.done %} opacity-50{% endif %}"
+>
+  <div class="flex items-center gap-2">
+    <h3 class="text-lg font-semibold"># {{ todo.idx }}</h3>
+    <p class="text-sm opacity-75">{{ todo.description }}</p>
+  </div>
+  <button
+    hx-delete="/todos/{{todo.idx}}"
+    hx-trigger="click"
+    hx-target="#todo-{{todo.idx}}"
+    hx-swap="delete swap:0.2s"
+  >
+    Delete
+  </button>
+</div>
