@@ -6,6 +6,7 @@ use crate::state::{Stats, Todo};
 #[template(path = "index.html")]
 pub struct IndexTemplate {
     pub stats: Stats,
+    pub trust_user_input: bool,
 }
 
 #[derive(Template, Default)]

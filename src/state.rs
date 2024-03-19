@@ -26,6 +26,7 @@ pub struct AppState {
     pub id_counter: IdCounter,
     pub stats_tx: mpsc::UnboundedSender<()>,
     pub sse_tx: broadcast::Sender<Event>,
+    pub trust_user_input: bool,
 }
 
 impl AppState {
@@ -35,6 +36,9 @@ impl AppState {
             id_counter: Default::default(),
             stats_tx,
             sse_tx,
+            trust_user_input: std::env::var("HTMX_TODO_TRUST_USER_INPUT")
+                .map(|var| var == "true")
+                .unwrap_or(false),
         }
     }
 

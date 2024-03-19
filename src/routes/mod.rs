@@ -19,5 +19,6 @@ pub fn router(state: AppState) -> Router {
 async fn serve_index(State(state): State<AppState>) -> templating::IndexTemplate {
     templating::IndexTemplate {
         stats: state.get_stats().await,
+        trust_user_input: state.trust_user_input,
     }
 }

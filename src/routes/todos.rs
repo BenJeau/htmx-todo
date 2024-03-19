@@ -29,14 +29,31 @@ struct AddTodo {
     description: String,
 }
 
+const POSSIBLE_TODOS: &[&str] = &[
+    "buy milk",
+    "walk the dog",
+    "clean the house",
+    "write a book",
+    "learn Rust",
+    "learn Axum",
+    "embrace htmx",
+];
+
 async fn add_todo(State(state): State<AppState>, Form(todo): Form<AddTodo>) -> impl IntoResponse {
     let mut todos = state.todos.write().await;
+    let idx = *state.id_counter.read().await;
+
+    let description = if state.trust_user_input {
+        todo.description
+    } else {
+        POSSIBLE_TODOS[idx % POSSIBLE_TODOS.len()].to_string()
+    };
 
     *state.id_counter.write().await += 1;
     let todo = Todo {
-        idx: *state.id_counter.read().await,
+        idx,
         done: false,
-        description: todo.description,
+        description,
     };
     todos.push(todo.clone());
 
