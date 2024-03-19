@@ -43,7 +43,7 @@ impl AppState {
     }
 
     pub fn alert_stats(&self) {
-        if let Err(_) = self.stats_tx.send(()) {
+        if self.stats_tx.send(()).is_err() {
             error!("failed to alert stats")
         }
     }
