@@ -1,11 +1,8 @@
 # HTMX - Todo List
 
-<div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem">
-  <img src="./public/static/favicon.svg" height=60>
-  <div>
-  A simple todo list web application built using <a href="https://htmx.org/">htmx</a> on a Rust <a href="https://github.com/tokio-rs/axum">Axum</a> REST API server that is styled using <a href="https://tailwindcss.com/">Tailwind CSS</a> and generating server-side HTML with <a href="https://github.com/djc/askama">Askama</a> templating with real-time updates (only the counter at the top right).
-  </div>
-</div>
+<img src="./public/static/favicon.svg" height="60px">
+
+A simple todo list web application built using [htmx](https://htmx.org/) on a Rust [Axum](https://github.com/tokio-rs/axum) REST API server that is styled using [Tailwind CSS](https://tailwindcss.com/) and generating server-side HTML with [Askama](https://github.com/djc/askama) templating with real-time updates (only the counter at the top right).
 
 This is my first application using htmx and it was interesting and differs from the React mentality.
 
